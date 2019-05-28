@@ -1,8 +1,8 @@
 version : '3'
-
 services:
   nginx:
     image: nginx
+    container_name: laradoceract_nginx
     build:
       context: .
       dockerfile: infra/dev/docker/nginx/Dockerfile
@@ -14,8 +14,9 @@ services:
         - php
   php:
     image: php:7-fpm
+    container_name: laradoceract_php
     build:
       context: .
       dockerfile: infra/dev/docker/fpm/Dockerfile
     volumes:
-    - ./backend:/var/www/html
+      - ./backend:/var/www/html
